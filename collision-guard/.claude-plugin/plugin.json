@@ -1,0 +1,12 @@
+{
+  "name": "collision-guard",
+  "version": "1.0.0",
+  "description": "Asks before Claude edits a file another open chat changed in the last 30 minutes: Proceed, Move to a worktree, or Cancel (/guard)",
+  "author": {
+    "name": "Phil Morehead",
+    "url": "https://github.com/philm123"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/philm123/sparq-claude-mods",
+  "repository": "https://github.com/philm123/sparq-claude-mods"
+}
