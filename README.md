@@ -21,7 +21,7 @@ The first four cover the basics every heavy Claude Code user hits. They save mon
 Add this repo as a plugin marketplace:
 
 ```bash
-claude plugin marketplace add philm123/sparq-claude-mods
+claude plugin marketplace add philm123/sparq-mods
 ```
 
 Then install the mods you want, one command each:
