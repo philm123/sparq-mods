@@ -1,6 +1,6 @@
 {
   "name": "sparq-mods",
-  "description": "Claude Code mods for the Sparq crew: cache savings, recording mode, a /goal progress bar, and a guard for parallel chats",
+  "description": "Claude Code mods for the Sparq crew: cache savings, recording mode, a /goal progress bar, a guard for parallel chats, and a files pane",
   "owner": {
     "name": "Phil Morehead",
     "url": "https://github.com/philm123"
@@ -25,6 +25,11 @@
       "name": "collision-guard",
       "source": "./collision-guard",
       "description": "Asks before Claude edits a file another open chat changed in the last 30 minutes: Proceed, Move to a worktree, or Cancel (/guard)"
+    },
+    {
+      "name": "files-pane",
+      "source": "./files-pane",
+      "description": "A file explorer beside the chat: a live, VS Code-style tree showing what Claude reads, edits and commits, with git status and diffs (/files)"
     }
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "name": "files-pane",
+  "version": "0.8.2+sparq.1",
+  "description": "A file explorer beside the chat: a live, VS Code-style tree showing what Claude reads, edits and commits, with git status and diffs (/files)",
+  "author": { "name": "Marius Adam", "url": "https://github.com/Marius-Adam" },
+  "license": "MIT",
+  "homepage": "https://github.com/Marius-Adam/claude-files-pane",
+  "repository": "https://github.com/philm123/sparq-mods",
+  "keywords": ["claude-code", "plugin", "file-explorer", "file-tree", "files", "explorer", "pane", "git", "diff", "vscode-icons"],
+  "types": "./types/index.d.ts"
+}

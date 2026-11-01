@@ -10,10 +10,11 @@ The first four cover the basics every heavy Claude Code user hits. They save mon
 | [Recording Mode](#recording-mode) | `/rec`, `/rec strict`, `/rec off`, `/rec config` | Masks keys, personal details, and business figures on screen and keeps private files closed while you record |
 | [Goal Meter](#goal-meter) | `/goals` | A progress bar for `/goal` built from Claude's own task plan, with an ETA and every chat's goal in one pane |
 | [Collision Guard](#collision-guard) | `/guard` | Asks before Claude edits a file another open chat changed in the last 30 minutes |
+| [Files pane](#files-pane) | `/files` | A file tree beside the chat showing what Claude reads, edits and commits, with git status and diffs |
 
 ## Requirements
 
-- **Claude Code 2.1.287 or later.** Check with `claude --version`. The mods work in the terminal and in the Desktop app's Code tab.
+- **Claude Code 2.1.287 or later** (2.1.299 or later for Files pane). Check with `claude --version`. The mods work in the terminal and in the Desktop app's Code tab.
 - **Mods turned on for your account.** Anthropic is turning mods on gradually. Run `claude plugin test` in any folder: "no hooks module to load" means mods can load, and "served off" means they can't yet. Nothing needs reinstalling once they're on.
 
 ## Install
@@ -40,6 +41,10 @@ claude plugin install goal-meter@sparq-mods
 
 ```bash
 claude plugin install collision-guard@sparq-mods
+```
+
+```bash
+claude plugin install files-pane@sparq-mods
 ```
 
 Then open a new chat. A mod loads when a chat starts, and `/reload-plugins` does not reload it.
@@ -117,13 +122,28 @@ When you run several chats in one project, two of them can end up changing the s
 
 `/guard` shows what it sees, `/guard off` turns it off, and `/guard window 60` changes the 30-minute window. Each chat keeps a small list of the files it changed, and nothing is added to Claude's prompt.
 
+## Files pane
+
+A side pane that shows what Claude is doing to your files as it happens. By [Marius Adam](https://github.com/Marius-Adam/claude-files-pane), under its own MIT license, with a fix for new and detached repositories that is proposed upstream.
+
+- **Card:** what Claude is doing right now: thinking, the command it runs, the file it reads or edits.
+- **Touched list:** the files Claude read (purple) or edited (orange) this turn or this session, with lines added and removed. Committed files turn green.
+- **Tree that follows Claude:** opens to each file Claude edits, even in another project. Uncommitted files show git's letter (M, A, D, U).
+- **Git line:** branch, commits ahead, and how many files changed.
+- **⋯ on a file:** `@`-mention it, copy its path, see its diff, find it in the tree, or open it in your editor, Finder or Explorer.
+- **Search** across the project, best matches first.
+
+`/files` brings the pane back if you close it. If you already installed it from `marius-adam`, uninstall that one first (`claude plugin uninstall files-pane@marius-adam`), or you get two panes.
+
+It is read-only. It lists folders and runs read-only git, and only in the repository the chat started in for anything a repository's config could turn into a program. It opens an app only when you press **Open in** or **Show in Finder**.
+
 ## Where the data lives
 
 Everything stays on your machine, under `~/.claude/mods-data/`: Cache Keeper's session heartbeats and saved handoffs, the recording flag and config, each chat's goal plan, and Collision Guard's file lists. The mods make no network calls of their own. Cache Keeper's keep-warm pings are small model requests, sent only while `/keepwarm` is on.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE). Files pane is by Marius Adam, under its own MIT license in [files-pane/LICENSE](files-pane/LICENSE), which also covers the vscode-icons icons it draws.
 
 ## Contributing
 
